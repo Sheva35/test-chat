@@ -1,0 +1,14 @@
+<div class="chat-container">
+    <div class="messages">
+        <app-message *ngFor="let message of messages" [message]="message"></app-message>
+        <div *ngIf="typingMessage">{{ typingMessage }}</div>
+    </div>
+    <form [formGroup]="messageForm" (ngSubmit)="sendMessage()">
+        <mat-form-field class="full-width">
+            <mat-label>Сообщение</mat-label>
+            <input matInput formControlName="message" (input)="onKey($event)">
+        </mat-form-field>
+        <button mat-stroked-button color="primary" type="submit" [disabled]="!messageForm.valid">Отправить</button>
+    </form>
+</div>
+  
